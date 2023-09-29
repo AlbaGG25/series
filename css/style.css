@@ -1,5 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+html{
+    font-size: 62.5%;
+}
 
+.title {
+    font-size: 3rem;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
 
+.form {
+    font-size: 5rem;
+}
 
+.input {
+    width: 25rem; 
+    height: 3rem;
+}
+
+.button  {
+    width: 6rem; 
+    height: 3rem;
+    border-radius: 10%;
+    border-style: none;
+    background-color: deepskyblue;
+}
+.list {
+    display: flex; 
+}
+.show {
+    background-color: cadetblue;
+    margin-bottom: 2rem;
+    width: 20%;
+    list-style: none;
+}
+.showTitle{
+ text-align: center;
+}
 
