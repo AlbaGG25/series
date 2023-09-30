@@ -4,28 +4,18 @@
 const searchName = document.querySelector ('.js-series-input');
 const btnSeries = document.querySelector ('.js-btn-search');
 const seriesContainer = document.querySelector ('.js-series-list');
-//collect input value 
+const favoritesContainer = document.querySelector ('.js-list-favorites');
 
+let showList= [];
+let showFavorites = []; 
 
-let showList = [];
-
-
-/////////  data request
-function collectData (){
-    const valueInput = searchName.value; 
-    fetch (`//api.tvmaze.com/search/shows?q=${valueInput}`)
-    .then ((response) => response.json ())
-    .then ((dataShow) => {
-    renderSeriesList (dataShow);
-    });
-}
 
 ///////paint HTML structure 
 
 function renderSeries (series) {
     let htmlStructure = "";
    
-    htmlStructure += `<li class="show">
+    htmlStructure += `<li class="show js-li" id="${series.show.id}" >
     <div>
     <h2 class="showTitle">${series.show.name}</h2>`;
     if (series.show.image!==null){
@@ -40,22 +30,71 @@ function renderSeries (series) {
     return htmlStructure
 }
 
-///////paint list 
+///////paint series list and favorites list
 
 function renderSeriesList (showList) {
+    seriesContainer.innerHTML = "";
     for (const series of showList) {
         seriesContainer.innerHTML += renderSeries (series); 
+    }
+    addEventsToSeries ();
+}
+
+function renderFavoritesList (showFavorites) {
+    favoritesContainer.innerHTML = "";
+    for (const favorites of showFavorites) {
+        favoritesContainer.innerHTML += renderSeries (favorites); 
+    }
+    addEventsToSeries ();
+}
+
+function handleClickSelect(event){
+    console.log (event.currentTarget.id);
+    /////id the series selected as favorite
+    const idSeries = event.currentTarget.id; 
+
+    ///// find the id of the series the user has selected
+    const showId = showList.find((series) => series.show.id == idSeries);
+    console.log (showId); 
+
+    ////find out if series are in the favorite list or not
+    const indexSeries = showFavorites.findIndex ((series) => series.show.id == idSeries); 
+    /////add or delete show in favorites list
+    if (indexSeries === -1){
+        showFavorites.push(showId);
+    } else {
+        showFavorites.splice(indexSeries, 1);
+    }
+    renderFavoritesList (showFavorites);
+}
+////////place an event on every show to hear the click
+function addEventsToSeries () {
+    const listSeries = document.querySelectorAll('.js-li');
+    console.log (listSeries);
+    for (const item of listSeries) {
+        item.addEventListener ('click', handleClickSelect)
     }
 }
 
 
+///////// handle function & data request searching
 function handleSearch (event){
     event.preventDefault (); 
-    const searchedSeries = showList.filter (series =>series.name.toLowerCase.includes (searchName.value.toLowerCase)) 
-    collectData (searchedSeries)
+   ////API request 
+    const valueInput = searchName.value; 
+    fetch (`//api.tvmaze.com/search/shows?q=${valueInput}`)
+    .then ((response) => response.json ())
+    .then ((dataShow) => {
+        showList = dataShow;
+        console.log (dataShow);
+        renderSeriesList (dataShow);
+    });
+   ////////filter when searching
+    const searchedSeries = showList.filter (series =>series.name.toLowerCase.includes (valueInput.toLowerCase));
+
 }
 
 
-//////Events (Search button)
+//////events (Search button)
 btnSeries.addEventListener("click", handleSearch);
 

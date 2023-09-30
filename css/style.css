@@ -8,6 +8,25 @@ html{
     font-size: 62.5%;
 }
 
+.body {
+   background-color: bisque;
+}
+
+.totalContainer{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    
+}
+.seriesContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+.seriesFavorites{
+    display: flex;
+    ;
+}
+
 .title {
     font-size: 3rem;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -15,6 +34,7 @@ html{
 
 .form {
     font-size: 5rem;
+    margin-bottom: 2rem;
 }
 
 .input {
@@ -35,10 +55,23 @@ html{
 .show {
     background-color: cadetblue;
     margin-bottom: 2rem;
-    width: 20%;
+    width: 120%;
     list-style: none;
 }
+
 .showTitle{
  text-align: center;
+}
+
+.hidden {
+    display: none; 
+}
+
+.favorite{
+    background-color: lightcoral;
+    margin-bottom: 2rem;
+    width: 120%;
+    list-style: none;
+    color: white; 
 }
 
