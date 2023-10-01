@@ -56,12 +56,19 @@ html{
     display: flex; 
 }
 
+.card {
+    display:flex; 
+    flex-direction: column;
+}
+
 .show {
     background-color: cadetblue;
     margin-bottom: 2rem;
-    width: 120%;
+    padding: 2rem;
+    width: 100%;
     list-style: none;
     cursor: pointer;
+    border-radius: 5%;
 }
 
 .titleFavorite {
@@ -73,6 +80,10 @@ html{
 .showTitle{
   text-align: center;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 1rem;
+}
+.showImage {
+    align-self: center;
 }
 
 .hidden {
@@ -82,9 +93,13 @@ html{
 .favorite{
     background-color: lightcoral;
     margin-bottom: 2rem;
-    width: 120%;
+    width: 100%;
     list-style: none;
     color: white; 
     cursor: pointer;
+    padding: 2rem;
+    list-style: none;
+    cursor: pointer;
+    border-radius: 5%;
 }
 

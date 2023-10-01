@@ -17,12 +17,12 @@ function renderSeries (series) {
     let htmlStructure = "";
    
     htmlStructure += `<li class="show js-li" id="${series.show.id}">
-    <div>
+    <div class="card">
     <h2 class="showTitle">${series.show.name}</h2>`;
     if (series.show.image!==null){
-        htmlStructure +=`<img title="${series.show.name}" src="${series.show.image.medium}" alt="${series.show.name}"/>`
+        htmlStructure +=`<img title="${series.show.name}" class="showImage" src="${series.show.image.medium}" alt="${series.show.name}"/>`
       }else{
-        htmlStructure += `<img title="${series.show.name}" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="${series.show.name}"/>`;
+        htmlStructure += `<img title="${series.show.name}" class="showImage" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="${series.show.name}"/>`;
       }
 
     htmlStructure += `</div>
@@ -49,17 +49,19 @@ function renderFavoritesList (showFavorites) {
     addEventsToSeries ();
 }
 
+////get favorites from LS when the web starts
+const savedFavorites = JSON.parse(localStorage.getItem('favorites'));
+console.log(savedFavorites);
+if (savedFavorites !== null){
+    showFavorites = savedFavorites; 
+    renderFavoritesList (showFavorites); 
+}
+
+
 function handleClickSelect(event){
     console.log (event.currentTarget.id);
-    /////id the series selected as favorite
+    ///// the series selected as favorite
     const idSeries = event.currentTarget.id; 
-    if (event.currentTarget.classList.contains('show')){
-        event.currentTarget.classList.add('favorite');
-        event.currentTarget.classList.remove('show');
-    } else {
-        event.currentTarget.classList.add('show');
-        event.currentTarget.classList.remove('favorite');
-    } 
     
     ///// find the id of the series the user has selected
     const showId = showList.find((series) => series.show.id == idSeries);
@@ -70,20 +72,15 @@ function handleClickSelect(event){
 
     /////add or delete show in favorites list
     if (indexSeries === -1){
-        showFavorites.push(showId);
+        showFavorites.push(showId)
+        event.currentTarget.classList.replace("show", "favorite")
     } else {
-        showFavorites.splice(indexSeries, 1);
+        showFavorites.splice(indexSeries, 1)
+        event.currentTarget.classList.replace("favorite", "show")
     }
+
     renderFavoritesList (showFavorites);
     localStorage.setItem('favorites', JSON.stringify(showFavorites));
-}
-
-////get favorites fromLS when the web starts
-const savedFavorites = JSON.parse(localStorage.getItem('favorites'));
-console.log(savedFavorites);
-if (savedFavorites !== null){
-    showFavorites = savedFavorites; 
-    renderFavoritesList (showFavorites); 
 }
 
 
@@ -106,8 +103,11 @@ function handleSearch (event){
 
 
 //////events (Search button and favorites click)
-btnSeries.addEventListener("click", handleSearch);
-////////place an event on every show to hear the click
+
+//////search button
+btnSeries.addEventListener('click', handleSearch);
+
+////////place an event on series list to hear the click
 function addEventsToSeries () {
     const listSeries = document.querySelectorAll('.js-li');
     console.log (listSeries);
