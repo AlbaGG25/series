@@ -10,6 +10,7 @@ html{
 
 .body {
    background-color: bisque;
+   padding: 5rem; 
 }
 
 .totalContainer{
@@ -20,11 +21,11 @@ html{
 }
 .seriesContainer{
     display: flex;
-    flex-wrap: wrap;
+    width: 15%;
 }
 .seriesFavorites{
     display: flex;
-    ;
+    width: 15%;
 }
 
 .title {
@@ -48,19 +49,30 @@ html{
     border-radius: 10%;
     border-style: none;
     background-color: deepskyblue;
+    cursor: pointer;
 }
+
 .list {
     display: flex; 
 }
+
 .show {
     background-color: cadetblue;
     margin-bottom: 2rem;
     width: 120%;
     list-style: none;
+    cursor: pointer;
+}
+
+.titleFavorite {
+    padding-left: 10rem;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 2rem;
 }
 
 .showTitle{
- text-align: center;
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .hidden {
@@ -73,5 +85,6 @@ html{
     width: 120%;
     list-style: none;
     color: white; 
+    cursor: pointer;
 }
 
