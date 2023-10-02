@@ -16,14 +16,14 @@ The project has a search bar to write the title of the show and a search button.
 - CSS
 
 ## Installation
-Use $ git clone 
 
+Use $ git clone https://github.com/Adalab/modulo-2-evaluacion-final-AlbaGG25.git
 
 ## Usability
 
 When the user clicks on the search button it will open the results list. The user can select a TV show as favorite and it will be storaged in a list next to the results so the user can check it anytime. The favorite list will remain visible until the user clicks on it again to remove it from the favorite list.
 
-If the user hasn´t write anything in the search bar it will show an error message. 
+If the user hasn´t written anything in the search bar it will show an error message. 
 
 The project get the series information from an API: 
 <https://www.tvmaze.com/api>
