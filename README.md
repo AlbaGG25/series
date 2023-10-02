@@ -26,8 +26,8 @@ The project get the series information from an API:
 
 
 ## Project access 
+http://beta.adalab.es/modulo-2-evaluacion-final-AlbaGG25/
 
-
-Author
+## Author
 @AlbaGG25
 
