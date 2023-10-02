@@ -10,9 +10,9 @@ The following project is a web site created to help users find new TV shows.
 The project has a search bar to write the title of the show and a search button. This search system allows the user to search shows by name. 
 
 ## Usability
-When the user clicks on the search button it will open the results list. The user can select a TV show as favorite and it will be storaged in a list next to the results so the user can check it anytime. The favorite list will remain visible until the user click on it again to remove it from the favorite list.
+When the user clicks on the search button it will open the results list. The user can select a TV show as favorite and it will be storaged in a list next to the results so the user can check it anytime. The favorite list will remain visible until the user clicks on it again to remove it from the favorite list.
 
-If you haven´t write anything in the search bar it will show you an error message. 
+If the user hasn´t write anything in the search bar it will show an error message. 
 
 The project get the series information from an API: 
 <https://www.tvmaze.com/api>
