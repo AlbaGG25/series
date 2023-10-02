@@ -53,7 +53,6 @@ function renderFavoritesList (showFavorites) {
 
 ////get favorites from LS when the web starts
 const savedFavorites = JSON.parse(localStorage.getItem('favorites'));
-console.log(savedFavorites);
 if (savedFavorites !== null){
     showFavorites = savedFavorites; 
     renderFavoritesList (showFavorites); 
@@ -61,13 +60,11 @@ if (savedFavorites !== null){
 
 
 function handleClickSelect(event){
-    console.log (event.currentTarget.id);
     ///// the series selected as favorite
     const idSeries = event.currentTarget.id; 
     
     ///// find the id of the series the user has selected
     const showId = showList.find((series) => series.show.id == idSeries);
-    console.log (showId); 
 
     ////find out if series are in the favorite list or not
     const indexSeries = showFavorites.findIndex ((series) => series.show.id == idSeries); 
@@ -94,7 +91,6 @@ function handleSearch (event){
     .then ((response) => response.json ())
     .then ((dataShow) => {
         showList = dataShow;
-        console.log (dataShow);
      if (valueInput === ''){
         seriesContainer.innerHTML = '¡Ups, algo está fallando! Prueba a buscar de nuevo';
      }else{
@@ -116,7 +112,6 @@ btnSeries.addEventListener('click', handleSearch);
 ////////place an event on series list to hear the click
 function addEventsToSeries () {
     const listSeries = document.querySelectorAll('.js-li');
-    console.log (listSeries);
     for (const series of listSeries) {
         series.addEventListener ('click', handleClickSelect)
     }
