@@ -5,7 +5,6 @@
 
 Hey there!
 
-
 The following project is a web site created to help users find new TV shows. 
 
 The project has a search bar to write the title of the show and a search button. This search system allows the user to search shows by name. 
