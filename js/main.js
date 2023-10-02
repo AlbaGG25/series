@@ -15,10 +15,13 @@ let showFavorites = [];
 
 function renderSeries (series) {
     let htmlStructure = "";
-   
-    htmlStructure += `<li class="show js-li" id="${series.show.id}">
-    <div class="card">
-    <h2 class="showTitle">${series.show.name}</h2>`;
+    
+    if (showFavorites.includes (series)){
+        htmlStructure += `<li class="favorite js-li" id="${series.show.id}">`
+    }else{
+        htmlStructure += `<li class="show js-li" id="${series.show.id}">`
+    }
+    htmlStructure += `<div class="card"><h2 class="showTitle">${series.show.name}</h2>`; 
     if (series.show.image!==null){
         htmlStructure +=`<img title="${series.show.name}" class="showImage" src="${series.show.image.medium}" alt="${series.show.name}"/>`
       }else{
@@ -27,7 +30,6 @@ function renderSeries (series) {
 
     htmlStructure += `</div>
     </li>`;
-
     return htmlStructure
 }
 
@@ -73,13 +75,12 @@ function handleClickSelect(event){
     /////add or delete show in favorites list
     if (indexSeries === -1){
         showFavorites.push(showId)
-        event.currentTarget.classList.replace("show", "favorite")
     } else {
         showFavorites.splice(indexSeries, 1)
-        event.currentTarget.classList.replace("favorite", "show")
     }
 
     renderFavoritesList (showFavorites);
+    renderSeriesList (showList);
     localStorage.setItem('favorites', JSON.stringify(showFavorites));
 }
 
@@ -94,8 +95,13 @@ function handleSearch (event){
     .then ((dataShow) => {
         showList = dataShow;
         console.log (dataShow);
+     if (valueInput === ''){
+        seriesContainer.innerHTML = '¡Ups, algo está fallando! Prueba a buscar de nuevo';
+     }else{
         renderSeriesList (dataShow);
+     }
     });
+
    ////////filter when searching
     const searchedSeries = showList.filter (series =>series.name.toLowerCase.includes (valueInput.toLowerCase));
     renderSeriesList (searchedSeries); 
