@@ -3,6 +3,7 @@
 
 const searchName = document.querySelector ('.js-series-input');
 const btnSeries = document.querySelector ('.js-btn-search');
+const btnLog = document.querySelector ('.js-btn-log'); 
 const seriesContainer = document.querySelector ('.js-series-list');
 const favoritesContainer = document.querySelector ('.js-list-favorites');
 
@@ -26,6 +27,12 @@ function renderSeries (series) {
         htmlStructure +=`<img title="${series.show.name}" class="showImage" src="${series.show.image.medium}" alt="${series.show.name}"/>`
       }else{
         htmlStructure += `<img title="${series.show.name}" class="showImage" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="${series.show.name}"/>`;
+      }
+
+      if (series.show.status !==null){
+        htmlStructure +=`<p>El estado de la serie es ${series.show.status}<p/>`
+      }else{
+        htmlStructure += `<p>El estado de la serie es ${series.show.status}<p/>`;
       }
 
     htmlStructure += `</div>
@@ -65,7 +72,7 @@ function handleClickSelect(event){
     
     ///// find the id of the series the user has selected
     const showId = showList.find((series) => series.show.id == idSeries);
-
+    console.log (showId);
     ////find out if series are in the favorite list or not
     const indexSeries = showFavorites.findIndex ((series) => series.show.id == idSeries); 
 
@@ -103,11 +110,25 @@ function handleSearch (event){
     renderSeriesList (searchedSeries); 
 }
 
+///////function  handle log button
+function handleLog (event) {
+   event.preventDefault (); 
+
+   for (const name of showFavorites) {
+     `${name}`
+     console.log (name.show.name); 
+
+    };
+   
+} 
 
 //////events (Search button and favorites click)
 
 //////search button
 btnSeries.addEventListener('click', handleSearch);
+
+btnLog.addEventListener('click', handleLog);
+
 
 ////////place an event on series list to hear the click
 function addEventsToSeries () {
