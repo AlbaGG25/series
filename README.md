@@ -15,7 +15,7 @@ The project has a search bar to write the title of the show and a search button.
 
 ## Installation
 
-Use $ git clone https://github.com/Adalab/modulo-2-evaluacion-final-AlbaGG25.git
+Use $ git clone (https://github.com/AlbaGG25/series.git)
 
 ## Usability
 
@@ -37,7 +37,7 @@ The project get the series information from an API:
 
 ## Project access 
 
-http://beta.adalab.es/modulo-2-evaluacion-final-AlbaGG25/
+(https://albagg25.github.io/series/)https://albagg25.github.io/series/
 
 ## Author
 @AlbaGG25
