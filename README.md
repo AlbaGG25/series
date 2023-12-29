@@ -1,6 +1,4 @@
 
-# Evaluación del Módulo 2 de Alba Ginés García
-
 # TV show finder
 
 Hey there!
